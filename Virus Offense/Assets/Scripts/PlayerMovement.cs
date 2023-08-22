@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,20 +10,12 @@ public class PlayerMovement : MonoBehaviour
     float moveHorizontal;
     float moveVertical;
 
-    Rigidbody2D rb;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    // Set this object's rb.velocity to the horizontal and vertical input amounts, multiplied by move speed
+    // Translate this object by the horizontal and vertical input amounts, multiplied by move speed
     private void FixedUpdate()
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
 
-        rb.velocity = new Vector2(moveHorizontal, moveVertical) * moveSpeed;
+        transform.Translate(new Vector2(moveHorizontal, moveVertical) * moveSpeed * Time.fixedDeltaTime, Space.World);
     }
 }
