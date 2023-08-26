@@ -8,7 +8,6 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float speed = 2;
     [SerializeField] Transform playerTarget;
 
-
     public void GainTarget(GameObject target)
     {
         playerTarget = target.transform;
