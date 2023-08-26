@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Only does all the collision functionality if the collision wasn't from object with the tag to be ignored
+        // Does all the collision functionality if the collision wasn't from object with the tag to be ignored
         if (collision.gameObject.CompareTag(ignoreObjectTag) == false)
         {
             // If tag of collided object is the same as the one needed to be targeted, deal damage to their health
@@ -54,6 +54,10 @@ public class Projectile : MonoBehaviour
             }
 
             Destroy(gameObject);
+        }
+        else // Ignores collision if the collision was from an object with the same ignore tag
+        {
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
         }
     }
 }

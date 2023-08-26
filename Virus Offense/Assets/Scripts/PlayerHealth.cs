@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] float maxHealth = 100;
+    public float maxHealth = 100;
     [SerializeField] float immunityTime = 0.1f;
     [SerializeField] bool destroyEnemyOnContact = true;
     [SerializeField] GameObject healthSliderVisual;
-    [SerializeField] float currentHealth;
+    public float currentHealth;
 
     [Header("On Death")]
     [SerializeField] GameObject deathParticles;
