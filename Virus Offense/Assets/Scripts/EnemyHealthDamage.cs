@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 public class EnemyHealthDamage : MonoBehaviour
 {
     [Header("Health Settings")]
-    [SerializeField] int maxHealth = 100;
-    [SerializeField] int currentHealth;
+    [SerializeField] float maxHealth = 100;
+    [SerializeField] float currentHealth;
 
     [Header("Damage Settings")]
     [SerializeField] float damage = 5;
@@ -40,7 +40,7 @@ public class EnemyHealthDamage : MonoBehaviour
     }
 
     // Update health
-    public void UpdateHealth(int changeOfHealth, bool isDamage = true)
+    public void UpdateHealth(float changeOfHealth, bool isDamage = true)
     {
         if (isDamage == true) // Subtract by changeOfHealth if damage recieved.
         {
