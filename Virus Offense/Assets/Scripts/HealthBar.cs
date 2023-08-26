@@ -17,11 +17,11 @@ public class HealthBar : MonoBehaviour
         // Hides bar when its value is either 0 or the max HP value. Reveals it otherwise.
         if (healthSlider.value == 0 || healthSlider.value == healthSlider.maxValue)
         {
-            gameObject.SetActive(false);
+            healthSlider.enabled = false;
         }
         else
         {
-            gameObject.SetActive(true);
+            healthSlider.enabled = true;
         }
     }
 
