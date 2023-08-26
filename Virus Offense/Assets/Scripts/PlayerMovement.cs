@@ -24,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
 
-        //animator.SetFloat("speed", Mathf.Abs(moveHorizontal));
-        //animator.SetFloat("speed", Mathf.Abs(moveVertical));
+        animator.SetFloat("Xmove", Mathf.Abs(moveHorizontal));
+        animator.SetFloat("Ymove", Mathf.Abs(moveVertical));
 
         transform.Translate(new Vector2(moveHorizontal, moveVertical) * moveSpeed * Time.fixedDeltaTime, Space.World);
         
