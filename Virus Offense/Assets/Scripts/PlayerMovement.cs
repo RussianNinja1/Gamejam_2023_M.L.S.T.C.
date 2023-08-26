@@ -24,9 +24,7 @@ public class PlayerMovement : MonoBehaviour
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
 
-        animator.SetFloat("Xmove", Mathf.Abs(moveHorizontal));
-        animator.SetFloat("Ymove", Mathf.Abs(moveVertical));
-
+        AnimateWalk(moveHorizontal, moveVertical);
         transform.Translate(new Vector2(moveHorizontal, moveVertical) * moveSpeed * Time.fixedDeltaTime, Space.World);
         
         // When isAttached is true, let camera follow player position
@@ -34,5 +32,12 @@ public class PlayerMovement : MonoBehaviour
         {
             attachedCamera.transform.position = new Vector3(transform.position.x, transform.position.y, attachedCamera.transform.position.z);
         }
+    }
+
+    // Calculate speed and set it for the animator
+    void AnimateWalk(float moveX, float moveY)
+    {
+        float speed = Mathf.Sqrt(Mathf.Pow(moveX, 2) +  Mathf.Pow(moveY, 2));
+        animator.SetFloat("speed", Mathf.Abs(speed));
     }
 }
