@@ -516,6 +516,8 @@ MonoBehaviour:
   immunityTime: 0.1
   destroyEnemyOnContact: 1
   currentHealth: 0
+  deathParticles: {fileID: 0}
+  particleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
