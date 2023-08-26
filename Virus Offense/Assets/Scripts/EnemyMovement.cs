@@ -6,8 +6,8 @@ using static UnityEngine.GraphicsBuffer;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float speed = 2;
+    [SerializeField] Transform playerTarget;
 
-    Transform playerTarget;
 
     public void GainTarget(GameObject target)
     {

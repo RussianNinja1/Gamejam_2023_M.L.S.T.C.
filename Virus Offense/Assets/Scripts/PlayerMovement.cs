@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Camera Attachment")]
     [SerializeField] GameObject attachedCamera;
     [SerializeField] bool isAttached = false;
+    [Header("Animation")]
+    public Animator animator;
+
 
     float moveHorizontal;
     float moveVertical;
@@ -20,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
+
+        animator.SetFloat("Xmove", Mathf.Abs(moveHorizontal));
+        animator.SetFloat("Ymove", Mathf.Abs(moveVertical));
 
         transform.Translate(new Vector2(moveHorizontal, moveVertical) * moveSpeed * Time.fixedDeltaTime, Space.World);
         
