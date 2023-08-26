@@ -10,6 +10,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] bool destroyEnemyOnContact = true;
     [SerializeField] float currentHealth;
 
+    [Header("On Death")]
+    [SerializeField] GameObject deathParticles;
+    [SerializeField] Color particleColor = Color.white;
+
     bool isImmune = false;
     HealthBar healthBar;
 
@@ -48,6 +52,17 @@ public class PlayerHealth : MonoBehaviour
         }
 
         healthBar.SetHealth(currentHealth);
+
+        // If at 0 health, spawn particles with set color, and then disable sprite renderer and collider
+        if (currentHealth <= 0)
+        {
+            GameObject newParticles = Instantiate(deathParticles, transform.position, deathParticles.transform.rotation) as GameObject;
+            var mainSettings = newParticles.GetComponent<ParticleSystem>().main;
+            mainSettings.startColor = particleColor;
+
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<PolygonCollider2D>().enabled = false;
+        }
     }
 
     // Prevents player from being hit too many times

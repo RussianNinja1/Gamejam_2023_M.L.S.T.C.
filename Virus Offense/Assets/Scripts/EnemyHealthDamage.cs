@@ -13,6 +13,10 @@ public class EnemyHealthDamage : MonoBehaviour
     [SerializeField] float damage = 5;
     [SerializeField] float contactDamageCooldown = 0;
 
+    [Header("On Death")]
+    [SerializeField] GameObject deathParticles;
+    [SerializeField] Color particleColor = Color.white;
+
     float contactDamageCounter = 0;
 
     void Start()
@@ -48,6 +52,14 @@ public class EnemyHealthDamage : MonoBehaviour
             if (currentHealth > maxHealth) { currentHealth = maxHealth; }
         }
 
-        // If at 0 health, trigger death
+        // If at 0 health, spawn particles with set color, and then destroy object
+        if (currentHealth <= 0)
+        {
+            GameObject newParticles = Instantiate(deathParticles, transform.position, deathParticles.transform.rotation) as GameObject;
+            var mainSettings = newParticles.GetComponent<ParticleSystem>().main;
+            mainSettings.startColor = particleColor;
+
+            Destroy(gameObject);
+        }
     }
 }
