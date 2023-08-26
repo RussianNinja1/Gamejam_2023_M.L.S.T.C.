@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] float maxHealth = 100;
     [SerializeField] float immunityTime = 0.1f;
     [SerializeField] bool destroyEnemyOnContact = true;
+    [SerializeField] GameObject healthSliderVisual;
     [SerializeField] float currentHealth;
 
     [Header("On Death")]
@@ -19,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        healthBar = GetComponentInChildren<HealthBar>();
+        healthBar = GetComponent<HealthBar>();
 
         // Set the our health and reset the health bar
         currentHealth = maxHealth;
@@ -51,8 +52,16 @@ public class PlayerHealth : MonoBehaviour
             if (currentHealth > maxHealth) { currentHealth = maxHealth; }
         }
 
-        healthBar.SetHealth(currentHealth);
-
+        // Hides health bar when current is either 0 or maxHealth. Reveals it otherwise.
+        if (currentHealth == 0 || currentHealth == maxHealth)
+        {
+            healthSliderVisual.SetActive(false);
+        }
+        else
+        {
+            healthSliderVisual.SetActive(true); healthBar.SetHealth(currentHealth);
+        }
+        
         // If at 0 health, spawn particles with set color, and then disable sprite renderer and collider
         if (currentHealth <= 0)
         {
@@ -60,7 +69,10 @@ public class PlayerHealth : MonoBehaviour
             var mainSettings = newParticles.GetComponent<ParticleSystem>().main;
             mainSettings.startColor = particleColor;
 
-            GetComponent<SpriteRenderer>().enabled = false;
+            foreach (SpriteRenderer sprite in transform.GetComponentsInChildren<SpriteRenderer>())
+            {
+                sprite.enabled = false;
+            }
             GetComponent<Collider2D>().enabled = false;
         }
     }

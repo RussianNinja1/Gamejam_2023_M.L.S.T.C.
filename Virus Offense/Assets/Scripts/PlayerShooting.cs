@@ -26,12 +26,6 @@ public class PlayerShooting : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotationZ));
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

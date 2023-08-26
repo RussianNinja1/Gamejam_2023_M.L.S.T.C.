@@ -5,24 +5,12 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    [SerializeField] GameObject healthSliderVisual;
     Slider healthSlider;
 
     private void Start()
     {
-        healthSlider = GetComponent<Slider>();
-    }
-
-    private void Update()
-    {
-        // Hides bar when its value is either 0 or the max HP value. Reveals it otherwise.
-        if (healthSlider.value == 0 || healthSlider.value == healthSlider.maxValue)
-        {
-            healthSlider.enabled = false;
-        }
-        else
-        {
-            healthSlider.enabled = true;
-        }
+        healthSlider = healthSliderVisual.GetComponent<Slider>();
     }
 
     //Sets the variables to their max value at start.
