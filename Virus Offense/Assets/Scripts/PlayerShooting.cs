@@ -17,8 +17,9 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] GameObject projectile;
 
     [Header("HP Drain Settings")]
-    [SerializeField] hpDrain chooseHowDrainWorks = hpDrain.flatNumber;
-    [SerializeField] float potencyOfDrain = 10;
+    [SerializeField] hpDrain chooseHowDrainWorks = hpDrain.percentCurrentHealth;
+    [SerializeField] float drainPotency = 10;
+    [SerializeField] float minHealthForDrain = 1;
 
     float fireCounter = 0;
     PlayerHealth health;
@@ -56,6 +57,9 @@ public class PlayerShooting : MonoBehaviour
             fireCounter = 0;
             GameObject newShot = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
             Physics2D.IgnoreCollision(newShot.GetComponent<Collider2D>(), GetComponentInParent<Collider2D>());
+            
+            // Also reduce player HP
+            DrainHP();
         }
     }
 
@@ -67,13 +71,13 @@ public class PlayerShooting : MonoBehaviour
         switch (chooseHowDrainWorks)
         {
             case hpDrain.flatNumber:
-                drainAmount = potencyOfDrain;
+                drainAmount = drainPotency;
                 break;
             case hpDrain.percentMaxHealth:
-                drainAmount = (potencyOfDrain / 100) * health.maxHealth;
+                drainAmount = (drainPotency / 100) * health.maxHealth;
                 break;
             case hpDrain.percentCurrentHealth:
-                drainAmount = (potencyOfDrain / 100) * health.currentHealth;
+                drainAmount = (drainPotency / 100) * health.currentHealth;
                 break;
         }
 
@@ -81,8 +85,11 @@ public class PlayerShooting : MonoBehaviour
         // If a shot would kill, leave the player at 1 HP instead
         if (drainAmount >= health.currentHealth)
         {
-            drainAmount = health.currentHealth - 1;
+            drainAmount = health.currentHealth - minHealthForDrain;
         }
+
+        // Set drain to 0 if it goes below 0
+        if (drainAmount < 0) { drainAmount = 0; }
 
         // Update health
         health.UpdateHealth(drainAmount, false);

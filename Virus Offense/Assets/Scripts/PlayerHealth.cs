@@ -41,15 +41,20 @@ public class PlayerHealth : MonoBehaviour
     // If it is damage, it can be affected by immunity time
     public void UpdateHealth(float changeOfHealth, bool isDamage = true)
     {
-        if (isDamage == true && isImmune == false) // Subtract by changeOfHealth if damage recieved when not immune. Triggers immunity.
+        if (isDamage == true && isImmune == false) // Subtract by changeOfHealth. Triggers immunity.
         {
             currentHealth -= changeOfHealth;
             StartCoroutine(Immunity());
         }
-        else if (isDamage == false) // Add by changeOfHealth if it isn't damage being recieved. Cannot surpass maxHealth.
+        else if (isDamage == false) // Subtract by changeOfHealth. Does not trigger immunity.
         {
-            currentHealth += changeOfHealth;
-            if (currentHealth > maxHealth) { currentHealth = maxHealth; }
+            currentHealth -= changeOfHealth;
+        }
+
+        // Limit currentHealth to not go over maxHealth
+        if (currentHealth > maxHealth) 
+        {
+            currentHealth = maxHealth; 
         }
 
         // Hides health bar when current is either 0 or maxHealth. Reveals it otherwise.

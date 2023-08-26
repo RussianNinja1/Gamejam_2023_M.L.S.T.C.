@@ -45,7 +45,7 @@ public class Projectile : MonoBehaviour
                 // This would be easier if there was one health script...
                 if (collision.gameObject.GetComponent<EnemyHealthDamage>() != null)
                 {
-                    collision.gameObject.GetComponent<EnemyHealthDamage>().UpdateHealth(damage, isDamage);
+                    collision.gameObject.GetComponent<EnemyHealthDamage>().UpdateHealth(damage);
                 }
                 else if (collision.gameObject.GetComponent<PlayerHealth>() != null) 
                 {
@@ -59,5 +59,10 @@ public class Projectile : MonoBehaviour
         {
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
         }
+    }
+
+    public void UpdateDamage(float newDamage)
+    {
+        damage = newDamage;
     }
 }

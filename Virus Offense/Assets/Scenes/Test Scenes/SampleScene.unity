@@ -359,6 +359,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5955755713570126008, guid: 76c80b6bbbf2b95428d81738fedaaaee, type: 3}
+      propertyPath: chooseHowDrainWorks
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5955755714437039775, guid: 76c80b6bbbf2b95428d81738fedaaaee, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

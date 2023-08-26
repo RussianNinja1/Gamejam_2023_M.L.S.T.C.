@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class EnemyMovement : MonoBehaviour
+public class SeekPlayer : MonoBehaviour
 {
-    [SerializeField] float speed = 2;
     [SerializeField] Transform playerTarget;
 
     public void GainTarget(GameObject target)
@@ -13,15 +11,12 @@ public class EnemyMovement : MonoBehaviour
         playerTarget = target.transform;
     }
 
-    public GameObject ReturnTarget() { return playerTarget.gameObject; }
-
     // When there is a defined playerTarget, rotate to it and move forward at constant speed
     void FixedUpdate()
     {
         if (playerTarget != null)
         {
             transform.up = playerTarget.position - transform.position;
-            GetComponent<Rigidbody2D>().velocity = transform.up * speed;
         }
     }
 }
