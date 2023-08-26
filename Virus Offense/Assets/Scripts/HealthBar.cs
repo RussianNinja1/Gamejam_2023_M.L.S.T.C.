@@ -26,13 +26,13 @@ public class HealthBar : MonoBehaviour
     }
 
     //Sets the variables to their max value at start.
-    public void SetMaxHealth(int maxHealth)
+    public void SetMaxHealth(float maxHealth)
     {
         healthSlider.maxValue = maxHealth;
     }
 
     //used to update the UI to the player's current health value
-    public void SetHealth(int health)
+    public void SetHealth(float health)
     {
         healthSlider.value = health;
     }

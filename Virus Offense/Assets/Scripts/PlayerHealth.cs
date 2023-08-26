@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] int maxHealth = 100;
+    [SerializeField] float maxHealth = 100;
     [SerializeField] float immunityTime = 0.1f;
     [SerializeField] bool destroyEnemyOnContact = true;
-    [SerializeField] int currentHealth;
+    [SerializeField] float currentHealth;
 
     bool isImmune = false;
     HealthBar healthBar;
@@ -34,19 +34,20 @@ public class PlayerHealth : MonoBehaviour
 
     // Update health and the HP bar.
     // If it is damage, it can be affected by immunity time
-    public void UpdateHealth(int changeOfHealth, bool isDamage = true)
+    public void UpdateHealth(float changeOfHealth, bool isDamage = true)
     {
         if (isDamage == true && isImmune == false) // Subtract by changeOfHealth if damage recieved when not immune. Triggers immunity.
         {
             currentHealth -= changeOfHealth;
-            healthBar.SetHealth(currentHealth);
             StartCoroutine(Immunity());
         }
-        else if (isDamage == false) // Add by changeOfHealth if it isn't damage being recieved
+        else if (isDamage == false) // Add by changeOfHealth if it isn't damage being recieved. Cannot surpass maxHealth.
         {
             currentHealth += changeOfHealth;
-            healthBar.SetHealth(currentHealth);
+            if (currentHealth > maxHealth) { currentHealth = maxHealth; }
         }
+
+        healthBar.SetHealth(currentHealth);
     }
 
     // Prevents player from being hit too many times
