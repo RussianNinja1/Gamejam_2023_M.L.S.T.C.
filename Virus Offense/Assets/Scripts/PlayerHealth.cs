@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
             mainSettings.startColor = particleColor;
 
             GetComponent<SpriteRenderer>().enabled = false;
-            GetComponent<PolygonCollider2D>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 

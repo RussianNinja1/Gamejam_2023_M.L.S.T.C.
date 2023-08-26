@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3268741769236332520}
   - component: {fileID: 157168029954315096}
+  - component: {fileID: 5000372717595606149}
   - component: {fileID: 6437209650619931567}
   - component: {fileID: 6029440401965542482}
   - component: {fileID: 6802169886328321293}
   m_Layer: 0
   m_Name: Basic Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +49,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  playerTarget: {fileID: 0}
+--- !u!114 &5000372717595606149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373615068818787066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f7390625732fab4caf2d5ff9d48ccad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 0
+  damage: 5
+  contactDamageCooldown: 0
+  deathParticles: {fileID: 3906115721548414158, guid: bd07e6a6d350fc64da3fce221ab817ed, type: 3}
+  particleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &6437209650619931567
 SpriteRenderer:
   m_ObjectHideFlags: 0

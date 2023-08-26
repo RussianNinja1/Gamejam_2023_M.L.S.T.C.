@@ -43,6 +43,7 @@ public class PlayerShooting : MonoBehaviour
         {
             fireCounter = 0;
             GameObject newShot = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+            Physics2D.IgnoreCollision(newShot.GetComponent<Collider2D>(), GetComponentInParent<Collider2D>());
         }
     }
 }

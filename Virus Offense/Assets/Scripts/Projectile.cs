@@ -24,11 +24,14 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Decrement lifetime, and destroy projectile when it reaches 0
         lifetime -= Time.deltaTime;
         if (lifetime < 0)
         {
             Destroy(gameObject);
         }
+
+        GetComponent<Rigidbody2D>().velocity = transform.up * speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
