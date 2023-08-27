@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 968445435}
   - component: {fileID: 968445434}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Data Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -706,6 +706,7 @@ GameObject:
   - component: {fileID: 1438585936}
   - component: {fileID: 1438585935}
   - component: {fileID: 1438585934}
+  - component: {fileID: 1438585937}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -777,7 +778,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1438585935}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1438585937}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1438585935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,6 +829,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438585932}
   m_CullTransparentMesh: 1
+--- !u!114 &1438585937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438585932}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3c6a5be50d6364bbe3281a6911ec95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 5955755714618025887, guid: 76c80b6bbbf2b95428d81738fedaaaee, type: 3}
+  firstLevelName: Level_1
 --- !u!1 &1950177614
 GameObject:
   m_ObjectHideFlags: 0
