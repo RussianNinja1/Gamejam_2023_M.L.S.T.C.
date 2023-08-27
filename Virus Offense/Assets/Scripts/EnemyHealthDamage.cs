@@ -78,6 +78,13 @@ public class EnemyHealthDamage : MonoBehaviour
         var mainSettings = newParticles.GetComponent<ParticleSystem>().main;
         mainSettings.startColor = particleColor;
 
+        SplitOnDeath splitEnemyClass = GetComponent<SplitOnDeath>();
+
+        if (splitEnemyClass != null)
+        {
+            splitEnemyClass.SplitEnemy();
+        }
+
         // Spawn heal bolt seeking player with appropriate healing
         GameObject newHeal = Instantiate(healBolt, transform.position, transform.rotation) as GameObject;
         newHeal.GetComponent<SeekPlayer>().GainTarget(GetComponent<EnemyMovement>().ReturnTarget());

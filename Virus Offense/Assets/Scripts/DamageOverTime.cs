@@ -51,7 +51,8 @@ public class DamageOverTime : MonoBehaviour
             {
                 dOTTickTimers[i]--;
             }
-            playerHealth.currentHealth -= damageToHealthValue;
+            playerHealth.UpdateHealth(damageToHealthValue, false);
+            //playerHealth.currentHealth -= damageToHealthValue;
             dOTTickTimers.RemoveAll(i => i == 0);
             yield return new WaitForSeconds(waitForSecondValue);
         }
