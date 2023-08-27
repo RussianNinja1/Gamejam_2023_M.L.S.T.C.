@@ -37,8 +37,13 @@ public class ReadyPlayer : MonoBehaviour
         playerbolt.transform.position = Vector3.MoveTowards(playerbolt.transform.position, spawnPos, distanceToCenter * Time.deltaTime / timeUntilSpawn);
         yield return new WaitForSeconds(timeUntilSpawn);
         Destroy(playerbolt);
+
+        // Show player and apply settings from save data
         playerObject.GetComponent<PlayerHealth>().ShowPlayer();
+        playerObject.GetComponent<PlayerHealth>().maxHealth = SaveData.maxHealth;
+        playerObject.GetComponent<PlayerMovement>().moveSpeed = SaveData.speed;
+
+
         gameObject.SetActive(false);
-        yield return null;
     }
 }
