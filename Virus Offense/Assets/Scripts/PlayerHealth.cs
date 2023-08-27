@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     [Header("On Death")]
     [SerializeField] GameObject deathParticles;
     [SerializeField] Color particleColor = Color.white;
+    [SerializeField] GameObject gameOverScreen;
 
     bool isImmune = false;
     HealthBar healthBar;
@@ -75,6 +76,7 @@ public class PlayerHealth : MonoBehaviour
             mainSettings.startColor = particleColor;
 
             HidePlayer();
+            gameOverScreen.SetActive(true);
         }
     }
 
