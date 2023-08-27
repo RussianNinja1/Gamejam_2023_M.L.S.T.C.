@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 3;
+    public float moveSpeed = 3;
 
     [Header("Camera Attachment")]
     [SerializeField] GameObject attachedCamera;
@@ -16,7 +16,12 @@ public class PlayerMovement : MonoBehaviour
 
     float moveHorizontal;
     float moveVertical;
-    
+
+    private void Start()
+    {
+        attachedCamera = GameObject.Find("Main Camera");
+    }
+
 
     // Translate this object by the horizontal and vertical input amounts, multiplied by move speed
     private void FixedUpdate()

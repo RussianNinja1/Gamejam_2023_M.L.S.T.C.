@@ -67,19 +67,44 @@ public class PlayerHealth : MonoBehaviour
             healthSliderVisual.SetActive(true); healthBar.SetHealth(currentHealth);
         }
         
-        // If at 0 health, spawn particles with set color, and then disable sprite renderer and collider
+        // If at 0 health, spawn particles with set color, and then hide player
         if (currentHealth <= 0)
         {
             GameObject newParticles = Instantiate(deathParticles, transform.position, deathParticles.transform.rotation) as GameObject;
             var mainSettings = newParticles.GetComponent<ParticleSystem>().main;
             mainSettings.startColor = particleColor;
 
-            foreach (SpriteRenderer sprite in transform.GetComponentsInChildren<SpriteRenderer>())
-            {
-                sprite.enabled = false;
-            }
-            GetComponent<Collider2D>().enabled = false;
+            HidePlayer();
         }
+    }
+
+    // Show Player procedure by enabling sprite render, colliders and scripts
+    public void ShowPlayer()
+    {
+        foreach (SpriteRenderer sprite in transform.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sprite.enabled = true;
+        }
+        GetComponent<Collider2D>().enabled = true;
+        GetComponent<PlayerMovement>().enabled = true;
+        GetComponentInChildren<PlayerShooting>().enabled = true;
+
+        // Spawn particles for showing up
+        GameObject newParticles = Instantiate(deathParticles, transform.position, deathParticles.transform.rotation) as GameObject;
+        var mainSettings = newParticles.GetComponent<ParticleSystem>().main;
+        mainSettings.startColor = particleColor;
+    }
+
+    // Hide Player procedure by disabling sprite render, colliders and scripts
+    public void HidePlayer()
+    {
+        foreach (SpriteRenderer sprite in transform.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sprite.enabled = false;
+        }
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<PlayerMovement>().enabled = false;
+        GetComponentInChildren<PlayerShooting>().enabled = false;
     }
 
     // Prevents player from being hit too many times
