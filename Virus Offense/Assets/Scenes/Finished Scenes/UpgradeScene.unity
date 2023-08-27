@@ -151,16 +151,16 @@ RectTransform:
   m_GameObject: {fileID: 282888996}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4218011, y: 1.4218011, z: 1.4218011}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1698675594}
-  m_Father: {fileID: 672027419}
-  m_RootOrder: 1
+  m_Father: {fileID: 1095355344}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 266, y: 0}
+  m_AnchoredPosition: {x: 468.58667, y: 211.00002}
   m_SizeDelta: {x: 130, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &282888998
@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 282888999}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 672027420}
+        m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
+        m_MethodName: UpgradeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &282888999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,11 +485,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 672027419}
+  - component: {fileID: 672027420}
   - component: {fileID: 672027418}
   - component: {fileID: 672027417}
   - component: {fileID: 672027416}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Upgrade Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -556,9 +569,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1678211343}
-  - {fileID: 282888997}
-  - {fileID: 747422674}
+  - {fileID: 1095355344}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -567,6 +578,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &672027420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672027415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a3d6bc58ac2294c907ea9d5999601d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitUntilStart: 5
+  waitUntilFinish: 5
+  upgradeSystem: {fileID: 1095355343}
+  maxHealthPercent: 10
+  speedPercent: 7
 --- !u!1 &747422673
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,18 +621,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747422673}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.70333326, y: 0.70333326, z: 0.70333326}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1367006442}
-  m_Father: {fileID: 672027419}
-  m_RootOrder: 2
+  m_Father: {fileID: 1095355344}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000097752, y: -257}
+  m_AnchoredPosition: {x: 281.50003, y: 30.243408}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &747422675
@@ -650,7 +678,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 747422676}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 672027420}
+        m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
+        m_MethodName: UpgradeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &747422676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,6 +729,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747422673}
   m_CullTransparentMesh: 1
+--- !u!1 &1095355343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1095355344}
+  m_Layer: 0
+  m_Name: Upgrade System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1095355344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095355343}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -400.237, y: -300.00003, z: 0}
+  m_LocalScale: {x: 1.4218011, y: 1.4218011, z: 1.4218011}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 747422674}
+  - {fileID: 1678211343}
+  - {fileID: 282888997}
+  m_Father: {fileID: 672027419}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1367006441
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,16 +994,16 @@ RectTransform:
   m_GameObject: {fileID: 1678211342}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4218011, y: 1.4218011, z: 1.4218011}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 610607761}
-  m_Father: {fileID: 672027419}
-  m_RootOrder: 0
+  m_Father: {fileID: 1095355344}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -266, y: 0}
+  m_AnchoredPosition: {x: 94.41339, y: 211.00002}
   m_SizeDelta: {x: 130, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1678211344
@@ -975,7 +1049,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1678211345}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 672027420}
+        m_TargetAssemblyTypeName: UpgradeStats, Assembly-CSharp
+        m_MethodName: UpgradeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1678211345
 MonoBehaviour:
   m_ObjectHideFlags: 0

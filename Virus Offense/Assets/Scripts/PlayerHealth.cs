@@ -71,10 +71,6 @@ public class PlayerHealth : MonoBehaviour
         // If at 0 health, spawn particles with set color, and then hide player
         if (currentHealth <= 0)
         {
-            GameObject newParticles = Instantiate(deathParticles, transform.position, deathParticles.transform.rotation) as GameObject;
-            var mainSettings = newParticles.GetComponent<ParticleSystem>().main;
-            mainSettings.startColor = particleColor;
-
             HidePlayer();
             gameOverScreen.SetActive(true);
         }
@@ -107,6 +103,11 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         GetComponent<PlayerMovement>().enabled = false;
         GetComponentInChildren<PlayerShooting>().enabled = false;
+
+        // Spawn particles when hiding
+        GameObject newParticles = Instantiate(deathParticles, transform.position, deathParticles.transform.rotation) as GameObject;
+        var mainSettings = newParticles.GetComponent<ParticleSystem>().main;
+        mainSettings.startColor = particleColor;
     }
 
     // Prevents player from being hit too many times
