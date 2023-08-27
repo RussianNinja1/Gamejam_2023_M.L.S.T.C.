@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] GameObject routCounter;
+
+    [Header("Enemies")]
     [SerializeField] List<float> enemySpawnTimes;
     [SerializeField] List<GameObject> enemySpawnPrefab;
-
+    
     float spawnTimer = 0;
     GameObject player;
 
-    // Find player tagged object
+    // Find player tagged object while adding enemies to rout objective
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
+        routCounter.GetComponent<RoutCounter>().UpdateSpawnerCount(enemySpawnPrefab.Count);
     }
 
     // Update is called once per frame
@@ -32,6 +36,8 @@ public class EnemySpawner : MonoBehaviour
 
                 enemySpawnTimes.RemoveAt(0);
                 enemySpawnPrefab.RemoveAt(0);
+
+                routCounter.GetComponent<RoutCounter>().UpdateSpawnerCount(-1); // Remove enemy from Rout counter, as it spawns in world
             }
         }
     }
