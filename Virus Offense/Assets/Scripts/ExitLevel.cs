@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ExitLevel : MonoBehaviour
 {
     [SerializeField] string nextLevelName = "Level_2";
-    [SerializeField] string upgradeScreenName = "UpgradeScene";
+    string upgradeScreenName = "UpgradeScene";
 
     [SerializeField] float timeUntilLoad = 3;
     [SerializeField] float angleOfSpawnAnimation = 0;

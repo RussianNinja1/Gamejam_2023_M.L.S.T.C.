@@ -38,6 +38,15 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    // If clicking, trigger scene transition
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            collision.GetComponent<ExitLevel>().TurnOnTransition();
+        }
+    }
+
     // Update health and the HP bar.
     // If it is damage, it can be affected by immunity time
     public void UpdateHealth(float changeOfHealth, bool isDamage = true)
