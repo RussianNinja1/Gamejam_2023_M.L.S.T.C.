@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  playerTarget: {fileID: 5955755714618025857, guid: 76c80b6bbbf2b95428d81738fedaaaee, type: 3}
+  playerTarget: {fileID: 0}
 --- !u!114 &185326381500871669
 MonoBehaviour:
   m_ObjectHideFlags: 0
